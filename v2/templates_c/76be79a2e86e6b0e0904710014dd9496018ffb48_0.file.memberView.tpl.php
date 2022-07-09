@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-07-07 07:56:55
+/* Smarty version 4.1.0, created on 2022-07-09 14:40:31
   from 'C:\wamp64\www\wild_code_challenge\v2\mod_member\view\memberView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_62c691c700c960_43123783',
+  'unifunc' => 'content_62c9935f77f371_82260758',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '76be79a2e86e6b0e0904710014dd9496018ffb48' => 
     array (
       0 => 'C:\\wamp64\\www\\wild_code_challenge\\v2\\mod_member\\view\\memberView.tpl',
-      1 => 1657180597,
+      1 => 1657377630,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62c691c700c960_43123783 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62c9935f77f371_82260758 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -56,47 +56,102 @@ function content_62c691c700c960_43123783 (Smarty_Internal_Template $_smarty_tpl)
         <form method="POST" action="index.php">
             <input type="hidden" name="gestion" value="member">
             <input type="hidden" name="action" value="addMember">
-            <label for="name">Nom de l'Argonaute</label>
             <input type="text" id="name" name="name">
-            <button type="submit" id="btn">Ajouter</button>
+            <button type="submit" id="btn">Ajouter
+                <svg enable-background="new 0 0 512 512" height="25px" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M256,512C114.625,512,0,397.391,0,256C0,114.609,114.625,0,256,0c141.391,0,256,114.609,256,256  C512,397.391,397.391,512,256,512z M256,64C149.969,64,64,149.969,64,256s85.969,192,192,192c106.047,0,192-85.969,192-192  S362.047,64,256,64z M288,384h-64v-96h-96v-64h96v-96h64v96h96v64h-96V384z"/></svg>
+            </button>
         </form>
     </div>
 
-    <div>
+    <div class="msg-container">
         <?php if (!empty($_smarty_tpl->tpl_vars['error']->value)) {?>
-            <?php echo $_smarty_tpl->tpl_vars['error']->value;?>
-
+            <span class="is-invalid"><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</span>
         <?php }?>
         <?php if (!empty($_smarty_tpl->tpl_vars['success']->value)) {?>
-            <?php echo $_smarty_tpl->tpl_vars['success']->value;?>
-
+            <span class="is-valid"><?php echo $_smarty_tpl->tpl_vars['success']->value;?>
+</span>
         <?php }?>
     </div>
 
     <div class="table-container">
-        <table id="table_id">
-            <tbody id="first">
-            <?php
+        <?php if ($_smarty_tpl->tpl_vars['firstCrew']->value) {?>
+            <table id="table_id">
+                <tbody>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['firstCrew']->value, 'firstMember');
+$_smarty_tpl->tpl_vars['firstMember']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['firstMember']->value) {
+$_smarty_tpl->tpl_vars['firstMember']->do_else = false;
+?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->tpl_vars['firstMember']->value->getName();?>
+</td>
+                    </tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </tbody>
+            </table>
+
+            <table id="table_id">
+                <tbody>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['secondCrew']->value, 'secondMember');
+$_smarty_tpl->tpl_vars['secondMember']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['secondMember']->value) {
+$_smarty_tpl->tpl_vars['secondMember']->do_else = false;
+?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->tpl_vars['secondMember']->value->getName();?>
+</td>
+                    </tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </tbody>
+            </table>
+
+            <table id="table_id">
+                <tbody>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lastCrew']->value, 'lastMember');
+$_smarty_tpl->tpl_vars['lastMember']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['lastMember']->value) {
+$_smarty_tpl->tpl_vars['lastMember']->do_else = false;
+?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->tpl_vars['lastMember']->value->getName();?>
+</td>
+                    </tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </tbody>
+            </table>
+            <?php } else { ?>
+            <table id="table_id">
+                <tbody>
+                <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['crew']->value, 'member');
 $_smarty_tpl->tpl_vars['member']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['member']->value) {
 $_smarty_tpl->tpl_vars['member']->do_else = false;
 ?>
-                <tr>
-                    <td><?php echo $_smarty_tpl->tpl_vars['member']->value->getName();?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->tpl_vars['member']->value->getName();?>
 </td>
-                </tr>
-            <?php
+                    </tr>
+                <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        <?php }?>
+
     </div>
 </main>
 
-<footer>
-    <span class="footer-text">Made by Quentin DELON for Wild Code School Challenge</span>
-</footer>
 <?php echo '<script'; ?>
  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><?php echo '</script'; ?>
 >

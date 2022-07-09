@@ -3,14 +3,19 @@
     font-family: Roboto, sans-serif;
 }
 
+body{
+    height: 100vh;
+    position: relative;
+}
+
 .is-valid{
     color: green;
-    border: 3px solid green;
+    padding: 5px 15px;
 }
 
 .is-invalid{
     color: red;
-    border: 3px solid red;
+    padding: 5px 15px;
 }
 
 header{
@@ -49,22 +54,61 @@ main{
     margin-top: 25px;
 }
 
+form{
+    display: flex;
+}
+
+input{
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    background: #f76c6c;
+    border: unset;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:hover svg{
+    transform: rotate(90deg);
+}
+
+svg{
+    margin-left: 10px;
+    transition: all .5s;
+}
+
+.msg-container{
+    margin-top: 15px;
+}
+
 .table-container{
     width: 100%;
     margin-top: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .ml-15{
     margin-left: 15%;
 }
 
-table{
-
+td{
+    padding: 10px;
 }
-
 
 footer{
     position: absolute;
@@ -75,3 +119,4 @@ footer{
     padding: 25px 0;
     font-size: 15px;
 }
+

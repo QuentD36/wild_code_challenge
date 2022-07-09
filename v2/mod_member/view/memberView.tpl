@@ -33,37 +33,71 @@
         <form method="POST" action="index.php">
             <input type="hidden" name="gestion" value="member">
             <input type="hidden" name="action" value="addMember">
-            <label for="name">Nom de l'Argonaute</label>
             <input type="text" id="name" name="name">
-            <button type="submit" id="btn">Ajouter</button>
+            <button type="submit" id="btn">Ajouter
+                <svg enable-background="new 0 0 512 512" height="25px" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M256,512C114.625,512,0,397.391,0,256C0,114.609,114.625,0,256,0c141.391,0,256,114.609,256,256  C512,397.391,397.391,512,256,512z M256,64C149.969,64,64,149.969,64,256s85.969,192,192,192c106.047,0,192-85.969,192-192  S362.047,64,256,64z M288,384h-64v-96h-96v-64h96v-96h64v96h96v64h-96V384z"/></svg>
+            </button>
         </form>
     </div>
 
-    <div>
+    <div class="msg-container">
         {if !empty($error)}
-            {$error}
+            <span class="is-invalid">{$error}</span>
         {/if}
         {if !empty($success)}
-            {$success}
+            <span class="is-valid">{$success}</span>
         {/if}
     </div>
 
     <div class="table-container">
-        <table id="table_id">
-            <tbody id="first">
-            {foreach from=$crew item=member}
-                <tr>
-                    <td>{$member->getName()}</td>
-                </tr>
-            {/foreach}
-            </tbody>
-        </table>
+        {if $firstCrew}
+            <table id="table_id">
+                <tbody>
+                {foreach from=$firstCrew item=firstMember}
+                    <tr>
+                        <td>{$firstMember->getName()}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+
+            <table id="table_id">
+                <tbody>
+                {foreach from=$secondCrew item=secondMember}
+                    <tr>
+                        <td>{$secondMember->getName()}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+
+            <table id="table_id">
+                <tbody>
+                {foreach from=$lastCrew item=lastMember}
+                    <tr>
+                        <td>{$lastMember->getName()}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            {else}
+            <table id="table_id">
+                <tbody>
+                {foreach from=$crew item=member}
+                    <tr>
+                        <td>{$member->getName()}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        {/if}
+
     </div>
 </main>
 
-<footer>
-    <span class="footer-text">Made by Quentin DELON for Wild Code School Challenge</span>
-</footer>
+{*<footer>*}
+{*    <span class="footer-text">Made by Quentin DELON for Wild Code School Challenge</span>*}
+{*</footer>*}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="public/assets/js/script.js"></script>
 </body>
