@@ -34,7 +34,7 @@ $(function (){
                     $('#name').removeClass("is-invalid");
                     $('#name').addClass("is-valid");
                     $('#output_name').hide();
-                    $('table:last-child').append("<td>"+ $('#name').val() +"</td>");
+                    // $('table:last-child').append("<td>"+ $('#name').val() +"</td>");
                     return true
                 } else{
                     $('#name').removeClass("is-valid");
